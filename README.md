@@ -134,8 +134,7 @@ The dashboard includes a real-time geo-threat visualization map that shows:
 - Attack count per country
 - Attack types (SQLi, XSS, LFI, etc.)
 
-
-
+The map is powered by the WAF's shared Lua memory and updates every few seconds.
 
 ---
 
