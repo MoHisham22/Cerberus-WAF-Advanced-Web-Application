@@ -1,4 +1,4 @@
-# Cerberus WAF — Advanced Web Application Firewall
+# Cerberus WAF Advanced Web Application Firewall
 
 <div align="center">
   <img src="docker/cerbrswaf_logo_assets/logo-Bx4v1vHV.png" alt="Cerberus WAF Logo" width="200"/>
