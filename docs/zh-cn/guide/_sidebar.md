@@ -1,0 +1,18 @@
+- <span class="iconfont icon-atom"></span> 指南
+  - [<span class="iconfont icon-fly"></span> 产品介绍](zh-cn/guide/)
+     - [<span class="iconfont icon-page"></span> 技术优势](zh-cn/guide/#dart-技术优势)
+     - [<span class="iconfont icon-star"></span> 功能对比](zh-cn/guide/#fire-功能对比)
+     - [<span class="iconfont icon-magic"></span> 效果评估](zh-cn/guide/?id=%e2%9c%a8-%e6%95%88%e6%9e%9c%e8%af%84%e4%bc%b0)
+     - [<span class="iconfont icon-mix"></span> 界面预览](zh-cn/guide/#art-界面预览)
+  - [<span class="iconfont icon-wxapp"></span> 快速入门](zh-cn/guide/install.md)
+     - [<span class="iconfont icon-component"></span> 配置要求](zh-cn/guide/install?id=%e2%99%a8%ef%b8%8f%e9%85%8d%e7%bd%ae%e8%a6%81%e6%b1%82)
+     - [<span class="iconfont icon-install"></span> 一键安装](zh-cn/guide/install?id=%f0%9f%9a%80%e4%b8%80%e9%94%ae%e5%ae%89%e8%a3%85)
+  - [<span class="iconfont icon-router"></span> 开始使用](zh-cn/guide/begin.md)
+     - [<span class="iconfont icon-crown"></span> 事前准备](zh-cn/guide/begin#beginner-事前准备)
+     - [<span class="iconfont icon-matrix"></span> 登录后台](zh-cn/guide/begin#computer-登录后台)
+     - [<span class="iconfont icon-intro1"></span> API接口](zh-cn/api/README)
+     - [<span class="iconfont icon-satellite"></span> 常见问题](zh-cn/guide/problems)
+  - [<span class="iconfont icon-alert"></span> 贡献捐赠](zh-cn/guide/contribute.md)
+  - [<span class="iconfont icon-discord"></span> 加入讨论](zh-cn/guide/discuss.md)
+  - [<span class="iconfont icon-nut"></span> 更新日志](zh-cn/CHANGELOG.md)
+

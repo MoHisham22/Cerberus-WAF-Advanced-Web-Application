@@ -1,0 +1,17 @@
+{
+ "id": "1",
+ "addr": ":4443",
+ "dsn": "root:YOUR_MYSQL_PASSWORD@tcp(wafdb:3306)/uuwaf?charset=utf8mb4&parseTime=true&loc=Local",
+ "jwt_key": "CHANGE_THIS_TO_A_RANDOM_32_CHAR_STRING",
+ "jwt_expiration": 43200,
+ "waf_nodes": [
+  "127.0.0.1:4447"
+ ],
+ "ml_server": "http://127.0.0.1:4445",
+ "ml_token": "CHANGE_THIS_TO_YOUR_ML_TOKEN",
+ "api_token": "CHANGE_THIS_TO_YOUR_API_TOKEN",
+ "log_db": true,
+ "log_level": "error",
+ "language": "en",
+ "version": "7.2.0"
+}

@@ -1,0 +1,79 @@
+networks:
+  wafnet:
+    name: wafnet
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - gateway: 172.31.254.1
+          subnet: 172.31.254.0/24
+    driver_opts:
+      com.docker.network.bridge.name: wafnet
+
+services:
+  uuwaf:
+    image: cerberuswaf:custom
+    container_name: uuwaf
+    restart: always
+    ports:
+      - "4444:4443"
+    networks:
+      - wafnet
+    volumes:
+      - /etc/localtime:/etc/localtime:ro
+      - ./waf_config:/uuwaf/web/conf
+      - ./waf_acme:/uuwaf/acme
+      - ./waf_logs:/uuwaf/logs
+      - ./waf_config/resolver.conf:/uuwaf/conf/resolver.conf:rw
+      - ./uuwaf.conf:/uuwaf/conf/uuwaf.conf:ro
+    environment:
+      - UUWAF_DB_DSN=root:${MYSQL_PASSWORD}@tcp(wafdb:3306)/uuwaf?charset=utf8mb4&parseTime=true&loc=Local
+    depends_on:
+      wafdb:
+        condition: service_healthy
+
+  wafdb:
+    image: mysql:5.7
+    container_name: wafdb
+    restart: always
+    networks:
+      wafnet:
+        ipv4_address: 172.31.254.3
+    ports:
+      - "6612:3306"
+    volumes:
+      - /etc/timezone:/etc/timezone:ro
+      - /etc/localtime:/etc/localtime:ro
+      - ./waf_data:/var/lib/mysql
+    environment:
+      - MYSQL_ROOT_PASSWORD=${MYSQL_PASSWORD}
+    command: ["--max_connections=512"]
+    healthcheck:
+      test: ["CMD", "mysqladmin", "-uroot", "-p${MYSQL_PASSWORD}", "ping", "-h", "127.0.0.1", "--silent"]
+      start_period: 3s
+      interval: 5s
+      timeout: 3s
+      retries: 10
+
+  cerberus-proxy:
+    image: nginx:alpine
+    container_name: cerberus-proxy
+    restart: always
+    ports:
+      - "4443:80"
+      - "80:80"
+    volumes:
+      - ./nginx_override.conf:/etc/nginx/conf.d/default.conf:ro
+      - ./cerbrswaf_logo_assets/logo-Bx4v1vHV.png:/usr/share/nginx/html/assets/logo-Bx4v1vHV.png:ro
+      - ./cerbrswaf_logo_assets/favicon.ico:/usr/share/nginx/html/favicon.ico:ro
+    networks:
+      - wafnet
+    depends_on:
+      - uuwaf
+
+  test-backend:
+    image: nginx:alpine
+    container_name: test-backend
+    restart: always
+    networks:
+      - wafnet

@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>CerberusWAF</title>
+  <link rel="icon" href="/favicon.ico" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+  <meta name="description" content="A industry-leading free, high-performance, AI and semantic technology web application and API security protection product">
+  <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+  <link rel="stylesheet" href="/_media/vue.css">
+  <link rel="stylesheet" href="/_media/custom.css">
+  <link rel="stylesheet" href="/_media/font.css">
+</head>
+<body>
+  <div id="app"></div>
+  <script>
+    (function() {
+      var userLang = navigator.language || navigator.userLanguage;
+      var currentPath = window.location.hash;
+
+      if (!currentPath || currentPath === '#/' || currentPath === '') {
+        if (userLang.toLowerCase().indexOf('zh') > -1) {
+          window.location.hash = '#/zh-cn/';
+        }
+      }
+    })();
+  </script>
+  <script>
+    // Set html "lang" attribute based on URL
+    var lang = location.hash.match(/#\/(zh-cn)\//);
+
+    if (lang) {
+      document.documentElement.setAttribute('lang', lang[1]);
+    }
+  
+    window.$docsify = {
+      requestHeaders: {
+         'cache-control': 'max-age=0',
+      },
+      name: 'CerberusWAF',
+      repo: 'https://github.com/Safe3/uusec-waf',
+      loadSidebar: true,
+      loadNavbar: true,
+      subMaxLevel: 5,
+      auto2top: true,
+      markdown: {
+        gfm: true,
+        tables: true,
+      },
+      themeColor: '#3599BA',
+      coverpage: true,
+      fallbackLanguages: ['en', 'zh-cn'],
+      nameLink: {
+          '/zh-cn/': '#/zh-cn/',
+          '/': '#/',
+      },
+      alias: {
+        '/(guide|api)?/_navbar.md': '/_navbar.md',
+        '/_sidebar.md': '/guide/_sidebar.md',
+        '/zh-cn/_sidebar.md': '/zh-cn/guide/_sidebar.md',
+        '/zh-cn/.*/_navbar.md': '/zh-cn/_navbar.md',
+        '/': '/guide/README.md',
+        '/zh-cn/': '/zh-cn/guide/README.md',
+      },
+      search: {
+          noData: {
+            '/zh-cn/': '没有结果!',
+            '/': 'No results!',
+          },
+          paths: 'auto',
+          placeholder: {
+            '/zh-cn/': '搜索',
+            '/': 'Search',
+          },
+          pathNamespaces: ['/zh-cn'],
+      },
+      pagination: {
+        previousText: 'Previous',
+        nextText: 'Next',
+      },
+    }
+  </script>
+<script src="/_media/docsify.min.js"></script>
+<script src="/_media/search.min.js"></script>
+<script src="/_media/prism-bash.min.js"></script>
+<script src="/_media/prism-markdown.min.js"></script>
+<script src="/_media/prism-lua.min.js"></script>
+<script src="/_media/docsify-pagination.min.js"></script>
+</body>
+</html>
